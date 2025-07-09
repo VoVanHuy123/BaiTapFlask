@@ -1,10 +1,12 @@
-from dao import load_user_data
+from dao import load_user_data,auth_user
+import unittest
 
-def test_login_user(username,password):
-    users = load_user_data()
-    for u in users:
-        if username === u.username:
-            if password = u.password:
-                return True
-    
-    return False
+class TestLogin(unittest.TestCase):
+    def test_success(self):
+        self.assertTrue(auth_user("huy", 123))  
+
+    def test_failure(self):
+        self.assertFalse(auth_user('huy', 122))
+
+if __name__ == '__main__':
+    unittest.main()
